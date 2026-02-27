@@ -1,95 +1,80 @@
-GreenPulse
-AI-Driven Urban Green Intelligence Platform
+# GreenPulse
+## AI-Driven Urban Green Intelligence Platform
 
-Live Demo: https://greenplanning-a6dfa.web.app/
+GreenPulse is a real-time, AI-powered urban green intelligence platform designed to support data-driven sustainable city planning. It integrates live environmental data streaming, AI-based analysis, and interactive geospatial visualization to identify high-priority urban wards for greening and afforestation.
 
-Video Demo: https://drive.google.com/file/d/1S93h6TX79NPR4tB_Pq41cR8f2YBrizuy/view?usp=sharing
+Built for the Hack For Green Bharat hackathon, the project demonstrates how streaming data pipelines, spatial analytics, and large language models can be combined into a practical decision-support system for urban sustainability.
 
-Overview
+---
 
-GreenPulse is a real-time, AI-powered urban green intelligence platform designed to support sustainable city planning. It integrates live environmental data streaming with AI-driven analysis to help identify high-priority wards for greening and afforestation interventions.
+## Live and Demo Links
 
-Built for the Hack For Green Bharat hackathon, the project demonstrates how streaming data, spatial analysis, and large language models can be combined into a practical decision-support system for urban sustainability.
+Live Demo (Frontend)  
+https://greenplanning-a6dfa.web.app/
 
-Key Capabilities
-Environmental Priority Analysis
+Full System Video Demo (Streaming + AI)  
+https://drive.google.com/file/d/1S93h6TX79NPR4tB_Pq41cR8f2YBrizuy/view?usp=sharing
 
-Computes a multi-factor ward-level priority score
+---
 
-Factors include population density, PM2.5 levels, temperature, and green cover
+## Key Features and Capabilities
 
-Provides transparent and explainable rankings
+### Environmental Priority Analysis
+- Computes a multi-factor ward-level priority score
+- Factors include population density, PM2.5 levels, temperature, and green cover
+- Provides transparent and explainable rankings
 
-Ward Clustering
+### Ward Clustering
+- Uses K-Means clustering to group wards with similar environmental stress
+- Enables region-specific and targeted greening strategies
 
-Uses K-Means clustering to group wards with similar environmental stress
+### Smart Greening Recommendations
+- Evaluates open land parcels based on ward priority
+- Considers proximity to existing parks and green spaces
+- Highlights high-impact afforestation zones
 
-Enables targeted and region-specific planning strategies
+### Real-Time Data Streaming
+- Powered by Pathway
+- Streams ward-level data directly from CSV sources
+- Any change in source data is reflected instantly across the system
 
-Smart Greening Recommendations
+### AI-Powered Query Interface
+- Supports natural-language questions such as:
+  - Which ward needs urgent greening?
+  - Which areas have high pollution but low green cover?
+- Responses are generated using Groq LLM based on live data
 
-Evaluates open land parcels based on ward priority
+### Interactive Map Visualization
+- Built using Leaflet.js
+- Toggle between priority view, cluster view, parks, and land-use layers
+- Interactive popups provide detailed ward-level insights
 
-Considers proximity to existing parks and green spaces
+---
 
-Highlights high-impact afforestation zones
+## Technology Stack
 
-Real-Time Data Streaming
+### Backend
+- Pathway (real-time streaming engine)
+- Python
+- Flask (REST API and LLM proxy)
 
-Uses Pathway to stream ward-level data from CSV sources
+### AI and Analytics
+- Groq LLM (LLaMA 3.1)
+- K-Means clustering
 
-Any change in source data is reflected instantly across the system
+### Frontend
+- HTML, CSS, JavaScript
+- Leaflet.js
+- D3.js
+- Turf.js
 
-AI-Powered Query Interface
+### Deployment
+- Docker
+- Firebase Hosting
 
-Supports natural-language questions such as:
+---
 
-Which ward needs urgent greening?
-
-Which areas have high pollution but low green cover?
-
-Responses are generated using Groq LLM based on live data
-
-Interactive Map Visualization
-
-Built using Leaflet and supporting geospatial libraries
-
-Toggle between priority view, cluster view, parks, and land-use layers
-
-Interactive popups provide detailed ward-level insights
-
-Technology Stack
-Backend
-
-Pathway (real-time streaming engine)
-
-Python
-
-Flask (REST API and LLM proxy)
-
-AI and Analytics
-
-Groq LLM (LLaMA 3.1)
-
-K-Means clustering
-
-Frontend
-
-HTML, CSS, JavaScript
-
-Leaflet.js
-
-D3.js
-
-Turf.js
-
-Deployment
-
-Docker
-
-Firebase Hosting
-
-System Architecture
+## System Architecture
 
 GreenPulse follows a streaming-first architecture that connects live environmental data to AI-driven insights and interactive visualization.
 
@@ -97,72 +82,58 @@ Ward-level environmental data is stored in CSV files, which act as the streaming
 
 This live data is consumed by a Flask-based REST API that exposes endpoints for ward data and AI queries. The API also forwards natural-language questions to the Groq LLM, ensuring responses are generated using the most recent environmental data.
 
-The frontend application communicates with the Flask API to fetch live ward metrics and AI-generated insights. An interactive map built with Leaflet visualizes ward priorities, clusters, parks, and land-use layers, allowing users to explore and analyze urban green needs dynamically.
+The frontend application communicates with the Flask API to fetch live ward metrics and AI-generated insights. An interactive map built with Leaflet visualizes ward priorities, clusters, parks, and land-use layers.
 
-Running the Project Locally
-Prerequisites
+---
 
-Python 3.9 or higher
+## Running the Project Locally
 
-Docker
+### Prerequisites
+- Python 3.9 or higher
+- Docker
+- Groq API key (optional; mock mode available)
 
-Groq API key (optional; mock mode available)
+---
 
-Step 1: Clone the Repository
+### Step 1: Clone the Repository
 
+```bash
 git clone https://github.com/RanjeetKaur14/GreenPriority.git
-
 cd GreenPriority
+```
 
-Step 2: Configure Environment Variables
+## Step 2: Configure Environment Variables
 
-Create a .env file in the root directory and add:
+Create a `.env` file in the root directory and add:
 
+```bash
 GROQ_API_KEY=your_groq_api_key_here
-
-Step 3: Run the Pathway Streaming Engine
-
+```
+### Step 3: Run the Pathway Streaming Engine
+```bash
 docker build -t greenpulse .
 docker run -v "%cd%\data:/app/data" greenpulse
-
-Pathway monitors data/ward_priority.csv and writes live updates to data/live_wards.jsonl.
-
-Step 4: Start the Flask Server
-
+```
+### Step 4: Start the Flask Server
+```bash
 pip install -r requirements.txt
 python mock_server.py
-
+```
 The API runs at:
 http://localhost:5000
-
-Step 5: Serve the Frontend
-
+### Step 5: Serve the Frontend
+```bash
 python -m http.server 8001
-
-Open in browser:
+```
 http://localhost:8001/map.html
 
-Demonstration
-Live Deployment
-
-https://greenplanning-a6dfa.web.app/
-
-(Frontend only, static data)
-
-Full System Demo
-
-https://drive.google.com/file/d/1S93h6TX79NPR4tB_Pq41cR8f2YBrizuy/view?usp=sharing
-
-(Shows real-time updates and AI-powered queries running locally)
-
-Project Structure
-
+### Project Structure
 .
 ├── data/
-│ ├── ward_priority.csv
-│ ├── delhi_wards.geojson
-│ ├── parks.geojson
-│ └── ...
+│   ├── ward_priority.csv
+│   ├── delhi_wards.geojson
+│   ├── parks.geojson
+│   └── ...
 ├── Dockerfile
 ├── pathway_server.py
 ├── mock_server.py
@@ -173,25 +144,25 @@ Project Structure
 ├── .env
 └── README.md
 
-Team Members
+### Team Members
 
 Ranjeet Kaur
-GitHub: https://github.com/RanjeetKaur14
+https://github.com/RanjeetKaur14
 
 Sriza Goel
-Github: https://github.com/SrizaGoel
+https://github.com/SrizaGoel
 
 Akshat Singh
-GitHub: https://github.com/akshatsingh1427
+https://github.com/akshatsingh1427
 
-Lavnaya Tomar:
-Github: https://github.com/lavanyatomarr
+Lavnaya Tomar
+https://github.com/lavanyatomarr
 
-License
+### License
 
 This project is licensed under the MIT License.
 
-Acknowledgments
+### Acknowledgments
 
 Pathway for real-time data streaming
 Groq for low-latency LLM inference
