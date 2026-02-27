@@ -128,6 +128,7 @@ python -m http.server 8001
 http://localhost:8001/map.html
 
 ### Project Structure
+```bash
 .
 ├── data/
 │   ├── ward_priority.csv
@@ -143,7 +144,7 @@ http://localhost:8001/map.html
 ├── style.css
 ├── .env
 └── README.md
-
+```
 ### Team Members
 
 Ranjeet Kaur
