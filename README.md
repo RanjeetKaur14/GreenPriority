@@ -1,7 +1,7 @@
-# GreenPulse
+# GreenPriority
 ## AI-Driven Urban Green Intelligence Platform
 
-GreenPulse is a real-time, AI-powered urban green intelligence platform designed to support data-driven sustainable city planning. It integrates live environmental data streaming, AI-based analysis, and interactive geospatial visualization to identify high-priority urban wards for greening and afforestation.
+GreenPriory is a real-time, AI-powered urban green intelligence platform designed to support data-driven sustainable city planning. It integrates live environmental data streaming, AI-based analysis, and interactive geospatial visualization to identify high-priority urban wards for greening and afforestation.
 
 Built for the Hack For Green Bharat hackathon, the project demonstrates how streaming data pipelines, spatial analytics, and large language models can be combined into a practical decision-support system for urban sustainability.
 
@@ -76,7 +76,7 @@ https://drive.google.com/file/d/1S93h6TX79NPR4tB_Pq41cR8f2YBrizuy/view?usp=shari
 
 ## System Architecture
 
-GreenPulse follows a streaming-first architecture that connects live environmental data to AI-driven insights and interactive visualization.
+GreenPriority follows a streaming-first architecture that connects live environmental data to AI-driven insights and interactive visualization.
 
 Ward-level environmental data is stored in CSV files, which act as the streaming source. These files are continuously monitored by the Pathway engine running inside a Docker container. Whenever the data changes, Pathway processes the updates in real time and outputs structured data in JSON Lines format.
 
