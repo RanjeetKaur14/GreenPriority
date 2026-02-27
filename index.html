@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenPulse – AI‑Driven Green Priority Indexing</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+  <div class="bg-overlay"></div>
+
+  <div class="hero">
+    <h1 class="glow">GreenPulse</h1>
+    <p class="subhead">Intelligent Green Space Prioritization for Sustainable Cities</p>
+    <a href="map.html" class="cta-button">Explore the Map</a>
+  </div>
+
+  <div class="features">
+    <!-- Card 1 -->
+    <div class="feature-card" onclick="expandCard(this)">
+      <div class="icon"></div>
+      <h3>Multi‑Factor Stress Index</h3>
+      <p class="short-desc">Combines PM2.5, population, temperature, and green cover into a single priority score.</p>
+      <div class="expanded-content">
+        <p>Each ward gets a score based on these four factors. High scores indicate urgent need for green intervention. This holistic view replaces single‑factor analysis.</p>
+        <span class="show-less" onclick="event.stopPropagation(); collapseCard(this)">Show less</span>
+      </div>
+      <span class="read-more">Read more</span>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="feature-card" onclick="expandCard(this)">
+      <div class="icon"></div>
+      <h3>AI‑Driven Clustering</h3>
+      <p class="short-desc">K‑Means reveals hidden environmental patterns across wards for targeted action.</p>
+      <div class="expanded-content">
+        <p>Wards are grouped into three clusters based on their environmental profiles. For example, one cluster may contain high‑pollution, low‑green wards – ideal for priority intervention.</p>
+        <span class="show-less" onclick="event.stopPropagation(); collapseCard(this)">Show less</span>
+      </div>
+      <span class="read-more">Read more</span>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="feature-card" onclick="expandCard(this)">
+      <div class="icon"></div>
+      <h3>Smart Site Recommendations</h3>
+      <p class="short-desc">Potential green zones are scored by impact – showing where intervention matters most.</p>
+      <div class="expanded-content">
+        <p>Each potential land parcel is scored based on the priority of its containing ward, population density, and proximity to existing parks. Higher scores mean greater environmental benefit if greened.</p>
+        <span class="show-less" onclick="event.stopPropagation(); collapseCard(this)">Show less</span>
+      </div>
+      <span class="read-more">Read more</span>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="feature-card" onclick="expandCard(this)">
+      <div class="icon"></div>
+      <h3>Interactive Heatmap</h3>
+      <p class="short-desc">Color‑coded wards and live data popups make analysis intuitive.</p>
+      <div class="expanded-content">
+        <p>Wards are colored by priority level (Low/Medium/High). Hover over any ward to see its population, PM2.5, temperature, and green cover instantly.</p>
+        <span class="show-less" onclick="event.stopPropagation(); collapseCard(this)">Show less</span>
+      </div>
+      <span class="read-more">Read more</span>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built for urban sustainability – GreenPulse © 2026</p>
+  </footer>
+
+  <script>
+    function expandCard(card) {
+  card.classList.add('expanded');
+  
+  // Smoothly scroll the card into view if it's partially outside the viewport
+  card.scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest',              // only scroll as much as necessary
+    inline: 'nearest'
+  });
+}
+
+    function collapseCard(link) {
+      const card = link.closest('.feature-card');
+      card.classList.remove('expanded');
+    }
+  </script>
+</body>
+</html>

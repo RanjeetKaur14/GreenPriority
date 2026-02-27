@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delhi Green Priority Map – AI Driven</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Turf.js for spatial analysis -->
+  <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+  <!-- AI clustering library -->
+  <script src="https://cdn.jsdelivr.net/npm/skmeans@0.11.3/dist/browser/skmeans.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <h2>Delhi Green Priority Map</h2>
+    <p>Hover over a ward • Toggle layers • AI‑scored potential sites</p>
+  </div>
+  <div id="map"></div>
+
+  <!-- Info panel (hidden by default, shown on hover) -->
+  <div id="info-panel" class="info-panel">
+    <div class="info-title">Ward Information</div>
+    <div id="info-content" class="info-content">Hover over a ward</div>
+  </div>
+
+  <!-- Chat panel (always visible) -->
+  <div id="chat-panel">
+    <div class="chat-title">GreenPulse AI Assistant</div>
+    <input type="text" id="chat-input" placeholder="Ask about wards... (e.g., highest priority?)">
+    <button id="chat-send">Ask</button>
+    <div id="chat-response"></div>
+  </div>
+
+  <!-- D3.js for CSV -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Main script -->
+  <script src="script.js"></script>
+  <!-- Chat functionality -->
+  <script>
+    document.getElementById('chat-send').addEventListener('click', async () => {
+      const question = document.getElementById('chat-input').value;
+      if (!question) return;
+      const responseDiv = document.getElementById('chat-response');
+      responseDiv.innerText = 'Thinking...';
+      try {
+        const res = await fetch('http://localhost:5000/v1/query/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: question })
+        });
+        const data = await res.json();
+        responseDiv.innerText = data.result || data.response || JSON.stringify(data);
+      } catch (e) {
+        responseDiv.innerText = 'Error: ' + e.message;
+      }
+    });
+  </script>
+  <!-- Force chat panel to be visible (just in case) -->
+  <script>
+    (function() {
+      const chat = document.getElementById('chat-panel');
+      if (chat) {
+        chat.style.display = 'block';
+        chat.style.visibility = 'visible';
+        chat.style.opacity = '1';
+      }
+    })();
+  </script>
+</body>
+</html>
