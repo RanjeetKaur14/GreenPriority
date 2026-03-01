@@ -30,7 +30,6 @@
     <div id="info-content" class="info-content">Hover over a ward</div>
   </div>
 
-  <!-- Chat panel (always visible) -->
   <div id="chat-panel">
     <div class="chat-title">GreenPulse AI Assistant</div>
     <input type="text" id="chat-input" placeholder="Ask about wards... (e.g., highest priority?)">
@@ -38,11 +37,10 @@
     <div id="chat-response"></div>
   </div>
 
-  <!-- D3.js for CSV -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Main script -->
+
   <script src="script.js"></script>
-  <!-- Chat functionality -->
+
   <script>
     document.getElementById('chat-send').addEventListener('click', async () => {
       const question = document.getElementById('chat-input').value;
@@ -76,3 +74,4 @@
 </body>
 
 </html>
+
