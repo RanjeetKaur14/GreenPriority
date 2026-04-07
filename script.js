@@ -1,4 +1,4 @@
-// ================= CONFIGURATION =================
+
 const MAP_CENTER = [28.6139, 77.2090];
 const MAP_ZOOM = 11;
 
@@ -6,7 +6,7 @@ const PRIORITY_COLORS = { 'Low': '#1a9850', 'Medium': '#fee08b', 'High': '#d7302
 const CLUSTER_COLORS = ['#1f78b4', '#33a02c', '#e31a23'];
 const LANDUSE_COLORS = { residential: '#9ecae1', commercial: '#fdae6b', industrial: '#bdbdbd' };
 
-// ================= MAP SETUP =================
+
 const map = L.map('map').setView(MAP_CENTER, MAP_ZOOM);
 
 const baseMaps = {
@@ -26,9 +26,6 @@ let wardData = {};
 let wardGeoJson = null;
 let parksGeoJson = null;
 
-// ================= LOAD ALL DATA =================
-// ================= LOAD ALL DATA =================
-// Fetch live ward data from Pathway
 async function fetchLiveWardData() {
   const response = await fetch('http://localhost:5000/v1/tables/wards/');
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
